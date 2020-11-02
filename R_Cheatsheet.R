@@ -123,5 +123,3 @@ summarize(data, stats = mean(column1, na.rm = T),n=n()) #Provide summary statist
 new_data = data%>%filter(column1>7.09)%>%select(column1,column2,column3) #Pipes, pass data through multiple steps
 
 starts_with('X'), ends_with('X'), contains('X'), matches('X'), num_range('X', 1:5), one_of(vector1) #Helpers to select columns
-
-g465MjNG1KuAso4
