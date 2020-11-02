@@ -84,7 +84,8 @@ apply(array,c(1,2),function) #Apply function to matrix. 1 is rows, 2 columns, c(
 ifelse(x<0,0,1) #Vectorized if/else statement for matrices
 apply(), lapply(data,func,args), sapply() #For matrices, vectors, sapply() returns array not list
 times_x = lapply(data, function(data, factor) {data*factor}, factor=4) #Works as lambda
-
+unlist() #See a list as vector
+glimpse() #Similar to head and names(). Needs dplyr
 
 #Graphics
 hist(mtcars$disp, breaks=100, col="Green") #Histogram
@@ -111,7 +112,16 @@ geom_point(), geom_bar(), geom_histogram(), geom_boxplot(), geom_bar(), geom_jit
 
 ggsave('myplot.pdf')
 
-
 #Dyplr which is like SQL
+library(dplyr)
+filter(data, column1 == 'something', column2 == 'something') #Filters by values. Can also use | for OR
+arrange(data, column1, column2) #Arrange by columns ASC, use desc(column) for descending
+select(data, column1:column2, column3) #Select columns
+mutate(data, newcolumn = column1 - column2) #Add new columns
+group_by(column1) #Group by data in that column. Can use multiple columns
+summarize(data, stats = mean(column1, na.rm = T),n=n()) #Provide summary statistics, can be grouped by functions
+new_data = data%>%filter(column1>7.09)%>%select(column1,column2,column3) #Pipes, pass data through multiple steps
 
+starts_with('X'), ends_with('X'), contains('X'), matches('X'), num_range('X', 1:5), one_of(vector1) #Helpers to select columns
 
+g465MjNG1KuAso4
